@@ -106,7 +106,7 @@ struct TempFile::TempFileImpl
     {
         if (const char* dir = std::getenv("OPENVDB_TEMP_DIR")) {
             if (0 != ::access(dir, F_OK)) {
-                ::mkdir(dir, S_IRUSR | S_IWUSR | S_IXUSR);
+                ::mkdir(dir/*, S_IRUSR | S_IWUSR | S_IXUSR*/);
                 if (0 != ::access(dir, F_OK)) {
                     OPENVDB_THROW(IoError,
                         "failed to create OPENVDB_TEMP_DIR (" + std::string(dir) + ")");
